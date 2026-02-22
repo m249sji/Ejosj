@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anatomia e Njeriut</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    font-family:'Arial', sans-serif;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    background: linear-gradient(135deg, #0000FF, #FF0000);
+    color:#fff;
+  }
+
+  /* TOP BAR */
+  .top-bar {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 50px;
+    background:#FF0000;
+  }
+
+  .top-bar .title { font-size:2rem; font-weight:bold; }
+  .top-bar button {
+    background:none; border:none; color:#fff; font-size:1rem;
+    cursor:pointer; padding:5px 10px; border-radius:5px; transition:0.3s;
+  }
+  .top-bar button:hover { opacity:0.8; }
+
+  /* SUBTITLE */
+  .subtitle {
+    text-align:center; font-size:2.5rem; font-weight:bold;
+    margin:40px 0 60px 0; text-transform:uppercase;
+  }
+
+  /* CONTENT MAJTA-DJATHA */
+  .content {
+    display:flex;
+    gap:30px;
+    flex:1;
+    padding:0 50px 50px 50px;
+    min-height: calc(100vh - 160px);
+    align-items:center;
+  }
+
+  /* FOTO MAJTAS */
+  .left-column {
+    flex:1;
+    min-width:500px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+  }
+  .main-image {
+    max-width:100%;
+    height:auto;
+    object-fit:contain;
+  }
+
+  /* CAROUSEL VERTIKAL DJATHTAS */
+  .right-column {
+    flex:1;
+    min-width:400px;
+    height:500px; /* mund të rregullohet sipas dëshirës */
+    overflow:hidden;
+    position:relative;
+  }
+
+  .carousel-track {
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+    position:absolute;
+    bottom:-100%; /* start nga poshtë */
+  }
+
+  .carousel-slide {
+    min-height:150px;
+    background:#fff;
+    color:#000;
+    border-radius:15px;
+    padding:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.3);
+  }
+
+  .carousel-slide h2 {
+    font-size:1.8rem;
+    margin-bottom:10px;
+    color:#FF0000;
+  }
+
+  .carousel-slide p {
+    font-size:1.2rem;
+    line-height:1.5;
+  }
+
+</style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <div class="title">Anatomia e Njeriut</div>
+    <div class="buttons">
+      <button onclick="location.href='index.html'">Hyrja</button>
+      <button onclick="location.href='systems.html'">Sistemet e Trupit</button>
+    </div>
+  </div>
+
+  <!-- SUBTITLE -->
+  <div class="subtitle">ZBULONI ANATOMIN E TRUPIT TUAJ!</div>
+
+  <!-- CONTENT -->
+  <div class="content">
+    <!-- FOTO MAJTAS -->
+    <div class="left-column">
+      <img src="images/trupi_full.png" alt="Trupi i Njeriut" class="main-image">
+    </div>
+
+    <!-- CAROUSEL VERTIKAL DJATHTAS -->
+    <div class="right-column">
+      <div class="carousel-track">
+        <div class="carousel-slide">
+          <h2>Sistemi Tretës ka 9 Metra</h2>
+          <p>Zorra e hollē e njeriut ka gjatësi 5-7 metra, ndērkohë që zorra e trashë shton edhe 1.5 metra. Sistemi tretës total është rreth 9 metra.</p>
+        </div>
+        <div class="carousel-slide">
+          <h2>Qelizat Rinovohen Vazhdimisht</h2>
+          <p>Trupi juaj zëvendëson miliona qeliza çdo sekondë. Qelizat e kuqe te gjakut jetojnë rreth 120 ditë, nděrkohë qelizat e lekurës rreth 2-4 javë.</p>
+        </div>
+        <div class="carousel-slide">
+          <h2>ADN-ja është e Pabesueshme</h2>
+          <p>Něse shtrihej i gjithë ADN-ja nga qelizat e trupit tuaj, gjatësia e tij do të ishte rreth 2 herë largesia nga Toka né Diell.</p>
+        </div>
+        <div class="carousel-slide">
+          <h2>Kockat</h2>
+          <p>Njeriu lind me rreth 270 kocka, por shumë bashkohen gjatë rritjes. Tek të rriturit mbeten 206 kocka. Femuri është kocka më e gjatë.</p>
+        </div>
+        <div class="carousel-slide">
+          <h2>Muskujt</h2>
+          <p>Trupi i njeriut ka mbi 600 muskuj. Muskuli i gjuhës është ndër më të fortit krahasuar me madhësinë e tij.</p>
+        </div>
+        <div class="carousel-slide">
+          <h2>Veshkat</h2>
+          <p>Veshkat filtrojnë rreth 200 litra gjak çdo ditë dhe prodhojnë 1-2 litra urinë. Çdo minutë, rreth 1.2 litra gjak kalon nëpër veshka.</p>
+        </div>
+        <div class="carousel-slide">
+          <h2>Qelizat e kuqe të gjakut</h2>
+          <p>Trupi prodhon rreth 2.5 milionë qeliza të kuqe të gjakut çdo sekondë. Çdo qelizë e kuqe ka formë disku dhe nuk ka bërthamë.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script>
+  const track = document.querySelector('.carousel-track');
+  const slides = document.querySelectorAll('.carousel-slide');
+  const slideHeight = slides[0].offsetHeight + 20; // slide + gap
+  let offset = 0;
+
+  setInterval(()=>{
+    offset += slideHeight;
+    track.style.transition = 'transform 1s linear';
+    track.style.transform = `translateY(-${offset}px)`;
+
+    // Loop infinit
+    if(offset >= slideHeight * slides.length){
+      setTimeout(()=>{
+        track.style.transition = 'none';
+        track.style.transform = 'translateY(0)';
+        offset = 0;
+      }, 1000);
+    }
+  }, 2500);
+</script>
+
+</body>
+</html>
